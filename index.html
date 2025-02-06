@@ -97,32 +97,10 @@
     
     function bootstrapChat() {
     embedded_svc.bootstrapEmbeddedService();
-    document.getElementById("customChatButton").style.display = "none"; // Hide custom button when chat open
+    document.getElementById("customChatButton").style.display = "none"; // Hide custom button when chat opens
 }
 
-function monitorChatMinimize() {
-    let chatContainer = document.querySelector('.embeddedServiceLiveAgentStateChat');
-    let customButton = document.getElementById("customChatButton");
 
-    if (!chatContainer) {
-        console.warn("Chat container not found. Retrying...");
-        setTimeout(monitorChatMinimize, 1000);
-        return;
-    }
-
-    let observer = new MutationObserver(() => {
-        if (chatContainer.style.display === "none" || chatContainer.classList.contains("minimized")) {
-            customButton.style.display = "block"; // Show custom button when chat is minimized
-        } else {
-            customButton.style.display = "none"; // Hide custom button when chat is active
-        }
-    });
-
-    observer.observe(chatContainer, { attributes: true, attributeFilter: ["style", "class"] });
-}
-
-// Run monitoring when the page loads
-setTimeout(monitorChatMinimize, 3000);
 
 
     </script>
