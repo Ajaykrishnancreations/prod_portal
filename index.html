@@ -5,29 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Chat Button with Logo</title>
     <style>
-       
-        #customChatButton {
-            display: flex;
-            align-items: center;
-            background-color: #000;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius:50px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            position: fixed;
-            transition: 0.3s ease;
-        }
+   #customChatButton {
+    display: flex;
+    align-items: center;
+    background-color: #000;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    position: fixed;
+    transition: width 0.3s ease, padding 0.3s ease;
+    width: 50px; /* Initially small */
+    height: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+}
 
-
-
-
-        #customChatButton img {
+#customChatButton img {
             width: 30px;
             height: 30px;
             margin-right: 10px;
@@ -35,11 +35,23 @@
         }
 
 
+#customChatButton span {
+    opacity: 0;
+    white-space: nowrap;
+    transition: opacity 0.3s ease;
+}
 
+#customChatButton.expanded {
+    width: auto;
+    padding: 10px 20px;
+    border-radius: 50px;
+}
 
-        #customChatButton:hover {
-           
-           
+#customChatButton.expanded span {
+    opacity: 1;
+    margin-left: 10px;
+}
+        #customChatButton:hover {           
             background-color: #000;
             box-shadow: 5px 5px 5px #000;
         }
@@ -60,8 +72,9 @@
     <script type='text/javascript'>
         function bootstrapChat() {
             embedded_svc.bootstrapEmbeddedService();
+            let button = document.getElementById("customChatButton");
+    button.classList.toggle("expanded");
         }
-
 
         var initESW = function(gslbBaseURL) {
             embedded_svc.settings.displayHelpButton = false;
