@@ -94,13 +94,13 @@
         initESW('https://service.force.com');
     }
     
-   function bootstrapChat() {
+    
+    function bootstrapChat() {
     embedded_svc.bootstrapEmbeddedService();
-    document.getElementById("customChatButton").style.display = "none"; // Hide custom button when chat opens
+    document.getElementById("customChatButton").style.display = "none"; // Hide custom button when chat open
 }
 
-
-    function monitorChatMinimize() {
+function monitorChatMinimize() {
     let chatContainer = document.querySelector('.embeddedServiceLiveAgentStateChat');
     let customButton = document.getElementById("customChatButton");
 
